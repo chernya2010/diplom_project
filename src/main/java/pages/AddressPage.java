@@ -3,17 +3,25 @@ package pages;
 import constants.IConstants;
 import generators.NumberGenerator;
 import generators.StringGenerator;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+@Log4j2
 public class AddressPage extends BasePage implements IConstants {
+
     protected NumberGenerator numberGenerator = new NumberGenerator();
     protected StringGenerator stringGenerator = new StringGenerator();
     private static final String STATE_DROPDOWN = "//select[@id='id_state']";
 
+    /**
+     * Instantiates a new Address page.
+     *
+     * @param driver the driver
+     */
     public AddressPage(WebDriver driver) {
         super(driver);
     }
@@ -45,7 +53,13 @@ public class AddressPage extends BasePage implements IConstants {
     @FindBy(xpath = "//button[@name='processAddress']")
     public WebElement proceedToCheckoutButton;
 
-    public AddressPage addNewAddress(){
+    /**
+     * Add new address page.
+     *
+     * @return the address page
+     */
+    public AddressPage addNewAddress() {
+        log.info("Fill address form");
         firstnameInput.sendKeys("Some text" + stringGenerator.randomText());
         lastnameInput.sendKeys("Some text" + stringGenerator.randomText());
         companyInput.sendKeys("Some text" + stringGenerator.randomText());
@@ -59,11 +73,18 @@ public class AddressPage extends BasePage implements IConstants {
         dropdown.selectByValue("1");
         additionalInformationInput.sendKeys("Some text" + stringGenerator.randomText());
         assignAddressInput.sendKeys("Some text" + stringGenerator.randomText());
+        log.info("Click on 'Save' button");
         saveAddressButton.click();
         return this;
     }
 
-    public AddressPage proceedCheckout(){
+    /**
+     * Proceed checkout address page.
+     *
+     * @return the address page
+     */
+    public AddressPage proceedCheckout() {
+        log.info("Click on 'Proceed To Checkout' button");
         proceedToCheckoutButton.click();
         return this;
     }

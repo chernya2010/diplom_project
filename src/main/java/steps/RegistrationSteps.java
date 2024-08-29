@@ -10,12 +10,22 @@ public class RegistrationSteps implements IConstants {
 
     public RegisterPage registerPage;
 
+    /**
+     * Instantiates a new Registration steps.
+     *
+     * @param driver the driver
+     */
     public RegistrationSteps(WebDriver driver) {
         registerPage = new RegisterPage(driver);
     }
 
+    /**
+     * Register new account.
+     *
+     * @param account the account
+     */
     @Step("Register new account")
-    public void registerNewAccount(Account account) throws InterruptedException {
+    public void registerNewAccount(Account account) {
         registerPage.openPage(LOGIN_PAGE_URL);
         registerPage.registerNewAccount(
                 account.getEmail(),
