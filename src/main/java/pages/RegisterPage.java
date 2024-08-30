@@ -45,7 +45,7 @@ public class RegisterPage extends BasePage implements IConstants {
         return new LoginPage(driver);
     }
 
-    public void registerNewAccount(String email, String firstname, String lastname, String password, String day, String month, String year) {
+    public void registerNewAccount(String email, String firstname, String lastname, String password, String day, String month, String year) throws InterruptedException {
         log.info("Fill registration form");
         createAccountEmailInput.sendKeys(email);
         createAnAccountButton.click();
@@ -56,10 +56,12 @@ public class RegisterPage extends BasePage implements IConstants {
         passwordInput.sendKeys(password);
         selectDay.sendKeys(day);
         selectMonth.sendKeys(month);
-        selectYear.click();
-        WebElement year1989 = driver.findElement(By.xpath("//span[@val='" + year + "']"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", year1989);
-        year1989.click();
+        selectYear.sendKeys(year);
+        Thread.sleep(2000);
+//        selectYear.click();
+//        WebElement year1989 = driver.findElement(By.xpath("//span[@val='" + year + "']"));
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", year1989);
+//        year1989.click();
         log.info("Click 'Register' button");
         registerButton.click();
     }
