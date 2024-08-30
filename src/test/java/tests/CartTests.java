@@ -29,8 +29,7 @@ public class CartTests extends TestPreconditions implements IConstants, ITestCon
      */
     @Test(description = "Удалить товар из корзины")
     public void deleteProductFromCartTest() throws InterruptedException {
-        basePage.openPage(BASE_PAGE_URL)
-                .hoverOnProductTileAndOpenProductDetailedPage("Faded Short Sleeve T-shirts");
+        basePageSteps.openProductDetailedPage("Faded Short Sleeve T-shirts");
         productDetailedPage.addProductToCart();
         addToCartModalWindow.clickPlaceAnOrderButtonOnModalWindow();
         cartPage.deleteProductFromCart("Faded Short Sleeve T-shirts");
@@ -47,13 +46,12 @@ public class CartTests extends TestPreconditions implements IConstants, ITestCon
     public void successfulCheckoutWithoutPaymentTest() throws InterruptedException {
         loginPage.openPage(LOGIN_PAGE_URL);
         registrationSteps.registerNewAccount(NEW_ACCOUNT);
-        basePage.openPage(BASE_PAGE_URL)
-                .hoverOnProductTileAndOpenProductDetailedPage("Faded Short Sleeve T-shirts");
+        basePageSteps.openProductDetailedPage("Faded Short Sleeve T-shirts");
         productDetailedPage.addProductToCart();
         addToCartModalWindow.clickPlaceAnOrderButtonOnModalWindow();
         cartPage.checkout();
-        addressPage.addNewAddress();
-        addressPage.proceedCheckout();
+        addressPage.addNewAddress()
+                   .proceedCheckout();
         shippingPage.proceedChechout();
         Assert.assertEquals(paymentPage.noPaymentModulesMessage.getText(), NO_PAYMENT_MODULES_CHECKOUT_MESSAGE);
     }

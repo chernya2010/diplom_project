@@ -4,13 +4,18 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import pages.*;
+import steps.BasePageSteps;
 import steps.LoginSteps;
+import steps.MyAccountSteps;
 import steps.RegistrationSteps;
 import java.time.Duration;
 import java.util.HashMap;
@@ -29,6 +34,8 @@ public class BaseTest {
     WishListPage wishListPage;
     MyAccountPage myAccountPage;
     LoginSteps loginSteps;
+    BasePageSteps basePageSteps;
+    MyAccountSteps myAccountSteps;
     RegistrationSteps registrationSteps;
     WomanModalWindow womanModalWindow;
     TShirtsPage tShirtsPage;
@@ -63,6 +70,8 @@ public class BaseTest {
     public void initSteps(){
         loginSteps = new LoginSteps(driver);
         registrationSteps = new RegistrationSteps(driver);
+        basePageSteps = new BasePageSteps(driver);
+        myAccountSteps = new MyAccountSteps(driver);
     }
 
     /**
@@ -81,6 +90,11 @@ public class BaseTest {
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
+//        FirefoxProfile profile = new FirefoxProfile();
+//        profile.setPreference("intl.accept_languages", "ru-RU");
+//        FirefoxOptions options = new FirefoxOptions();
+//        options.setProfile(profile);
+//        driver = new FirefoxDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().window().maximize();
         PageFactory.initElements(driver, this);

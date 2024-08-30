@@ -17,11 +17,9 @@ public class WishListTests extends TestPreconditions implements IConstants, ITes
     public void addProductToWishListFromMainPageTest() throws InterruptedException {
         loginPage.openPage(LOGIN_PAGE_URL);
         registrationSteps.registerNewAccount(NEW_ACCOUNT);
-        basePage.openPage(BASE_PAGE_URL);
-        basePage.hoverOnProductTileAndOpenProductDetailedPage("Faded Short Sleeve T-shirts");
+        basePageSteps.openProductDetailedPage("Faded Short Sleeve T-shirts");
         productDetailedPage.addToWishList();
-        myAccountPage.openPage(MY_ACCOUNT_PAGE_URL)
-                     .goToWishList();
+        myAccountSteps.openWishList();
         wishListPage.openWishListTails();
         Assert.assertEquals(driver.getCurrentUrl(), WISH_LIST_PAGE_URL);
         Assert.assertEquals(wishListPage.getProductNameFromWishList(), EXPECTED_WISH_LIST_PRODUCT_NAME);
