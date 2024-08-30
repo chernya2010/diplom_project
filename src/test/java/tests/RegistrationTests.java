@@ -12,7 +12,7 @@ public class RegistrationTests extends TestPreconditions implements IConstants, 
      * Register new account with valid data test.
      */
     @Test(description = "Успешная регистрация нового пользователя")
-    public void registerNewAccountWithValidDataTest() {
+    public void registerNewAccountWithValidDataTest() throws InterruptedException {
         loginPage.openPage(LOGIN_PAGE_URL);
         registrationSteps.registerNewAccount(NEW_ACCOUNT);
         Assert.assertEquals(driver.getCurrentUrl(), MY_ACCOUNT_PAGE_URL);

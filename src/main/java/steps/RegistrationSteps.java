@@ -27,7 +27,7 @@ public class RegistrationSteps implements IConstants {
      * @param account the account
      */
     @Step("Register new account")
-    public RegistrationSteps registerNewAccount(Account account) {
+    public RegistrationSteps registerNewAccount(Account account) throws InterruptedException {
         log.info("Open {} page", LOGIN_PAGE_URL);
         registerPage.openPage(LOGIN_PAGE_URL);
         log.info("Register new account");
