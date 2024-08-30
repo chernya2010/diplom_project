@@ -58,6 +58,7 @@ public class RegisterPage extends BasePage implements IConstants {
         selectMonth.sendKeys(month);
         selectYear.sendKeys(year);
         Thread.sleep(2000);
+//        Без тред слипа не работает в дженкинсе. Пишет элемент не кликабельный
 //        selectYear.click();
 //        WebElement year1989 = driver.findElement(By.xpath("//span[@val='" + year + "']"));
 //        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", year1989);
