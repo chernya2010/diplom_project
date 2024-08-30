@@ -12,7 +12,7 @@ public class ContactUsTests extends BaseTest implements IConstants, ITestConstan
      * Successful send contact us message test.
      */
     @Test(description = "Успешная отправка сообщения в разделе “Обратная связь”")
-    public void successfulSendContactUsMessageTest(){
+    public void successfulSendContactUsMessageTest() {
         contactUsPage.openPage(CONTACT_US_PAGE_URL)
                      .successfulSendContactUsMessage();
         Assert.assertEquals(driver.getCurrentUrl(), CONTACT_US_PAGE_URL);

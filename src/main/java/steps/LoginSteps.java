@@ -2,9 +2,11 @@ package steps;
 
 import constants.IConstants;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 
+@Log4j2
 public class LoginSteps implements IConstants {
 
     public LoginPage loginPage;
@@ -27,6 +29,7 @@ public class LoginSteps implements IConstants {
      */
     @Step("Login")
     public LoginSteps login(String email, String password) {
+        log.info("Open {} page and login with {} email", LOGIN_PAGE_URL, email);
         loginPage
                 .openPage(LOGIN_PAGE_URL)
                 .login(email, password);

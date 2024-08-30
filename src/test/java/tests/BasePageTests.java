@@ -25,7 +25,7 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
      * Open t shirts page from woman section test.
      */
     @Test(description = "Переход к странице Tops -> T-Shirts из модального окна WOMEN")
-    public void openTShirtsPageFromWomanSectionTest(){
+    public void openTShirtsPageFromWomanSectionTest() {
         basePage.openPage(BASE_PAGE_URL)
                 .hoverOnWomanSection();
         womanModalWindow.openTShirtsPage();
@@ -37,7 +37,7 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
      * Go to product from search drop down test.
      */
     @Test(description = "Переход на детальную страницу товара из выпадающего списка поля “Поиск”")
-    public void goToProductFromSearchDropDownTest(){
+    public void goToProductFromSearchDropDownTest() {
         basePage.openPage(BASE_PAGE_URL)
                 .goToProductFromSearchDropDown("Faded Short Sleeve T-shirts");
         Assert.assertEquals(driver.getCurrentUrl(), "http://prestashop.qatestlab.com.ua/ru/tshirts/1-faded-short-sleeve-tshirts.html");
