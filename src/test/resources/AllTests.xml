@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="diplom Test Suite" parallel="tests" thread-count="2">
+<suite name="Diplom Test Suite" parallel="tests" thread-count="2">
     <test name="All tests" >
         <classes>
             <class name="tests.BasePageTests"/>
