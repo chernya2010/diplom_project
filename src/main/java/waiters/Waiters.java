@@ -30,4 +30,9 @@ public class Waiters {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOf(xpath));
     }
+
+    public static void waitUntilTextPresentInElementValue(WebDriver driver, WebElement xpath, String text){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.textToBePresentInElementValue(xpath, text));
+    }
 }

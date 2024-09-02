@@ -46,6 +46,6 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
                 .goToProductFromSearchDropDown(PRODUCT_NAME);
         AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(driver.getCurrentUrl(), "http://prestashop.qatestlab.com.ua/ru/tshirts/1-faded-short-sleeve-tshirts.html");
-        Assert.assertEquals(productDetailedPage.productName.getText(), "Faded Short Sleeve T-shirts");
+        Assert.assertEquals(productDetailedPage.productName.getText(), PRODUCT_NAME);
     }
 }
