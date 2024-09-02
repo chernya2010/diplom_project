@@ -18,7 +18,7 @@ public class WishListTests extends TestPreconditions implements IConstants, ITes
     public void addProductToWishListFromMainPageTest() throws InterruptedException {
         loginPage.openPage(LOGIN_PAGE_URL);
         registrationSteps.registerNewAccount(NEW_ACCOUNT);
-        basePageSteps.openProductDetailedPage("Faded Short Sleeve T-shirts");
+        basePageSteps.openProductDetailedPage(PRODUCT_NAME);
         productDetailedPage.addToWishList();
         myAccountSteps.openWishList();
         wishListPage.openWishListTails();

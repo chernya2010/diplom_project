@@ -17,7 +17,7 @@ public class CartTests extends TestPreconditions implements IConstants, ITestCon
     @Test(description = "Добавить товар в корзину с главной страницы")
     public void addProductToCartFromModalWindowTest() throws InterruptedException {
         basePage.openPage(BASE_PAGE_URL)
-                .hoverOnProductTileAndClickAddToCartButton("Faded Short Sleeve T-shirts");
+                .hoverOnProductTileAndClickAddToCartButton(PRODUCT_NAME);
         addToCartModalWindow.clickPlaceAnOrderButtonOnModalWindow();
         AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(CART_PAGE_URL, driver.getCurrentUrl());
@@ -31,7 +31,7 @@ public class CartTests extends TestPreconditions implements IConstants, ITestCon
      */
     @Test(description = "Удалить товар из корзины")
     public void deleteProductFromCartTest() throws InterruptedException {
-        basePageSteps.openProductDetailedPage("Faded Short Sleeve T-shirts");
+        basePageSteps.openProductDetailedPage(PRODUCT_NAME);
         productDetailedPage.addProductToCart();
         addToCartModalWindow.clickPlaceAnOrderButtonOnModalWindow();
         cartPage.deleteProductFromCart("Faded Short Sleeve T-shirts");
@@ -49,7 +49,7 @@ public class CartTests extends TestPreconditions implements IConstants, ITestCon
     public void successfulCheckoutWithoutPaymentTest() throws InterruptedException {
         loginPage.openPage(LOGIN_PAGE_URL);
         registrationSteps.registerNewAccount(NEW_ACCOUNT);
-        basePageSteps.openProductDetailedPage("Faded Short Sleeve T-shirts");
+        basePageSteps.openProductDetailedPage(PRODUCT_NAME);
         productDetailedPage.addProductToCart();
         addToCartModalWindow.clickPlaceAnOrderButtonOnModalWindow();
         cartPage.checkout();

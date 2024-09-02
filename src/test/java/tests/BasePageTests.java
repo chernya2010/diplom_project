@@ -19,7 +19,7 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
         basePage.openPage(BASE_PAGE_URL)
                 .changeCurrency("Евро");
         Thread.sleep(1000);//не менять
-        basePage.hoverOnProductTileAndOpenProductDetailedPage("Faded Short Sleeve T-shirts");
+        basePage.hoverOnProductTileAndOpenProductDetailedPage(PRODUCT_NAME);
         AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(basePage.getProductCurrency(),"€");
     }
@@ -43,7 +43,7 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
     @Test(description = "Переход на детальную страницу товара из выпадающего списка поля “Поиск”")
     public void goToProductFromSearchDropDownTest() {
         basePage.openPage(BASE_PAGE_URL)
-                .goToProductFromSearchDropDown("Faded Short Sleeve T-shirts");
+                .goToProductFromSearchDropDown(PRODUCT_NAME);
         AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(driver.getCurrentUrl(), "http://prestashop.qatestlab.com.ua/ru/tshirts/1-faded-short-sleeve-tshirts.html");
         Assert.assertEquals(productDetailedPage.productName.getText(), "Faded Short Sleeve T-shirts");

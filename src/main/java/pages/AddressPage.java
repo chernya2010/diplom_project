@@ -75,7 +75,6 @@ public class AddressPage extends BasePage implements IConstants {
         additionalInformationInput.sendKeys(stringGenerator.randomText());
         assignAddressInput.sendKeys(stringGenerator.randomText());
         log.info("Click on 'Save' button");
-//        saveAddressButton.click();
         new Button(driver).click(saveAddressButton);
         return this;
     }
@@ -87,7 +86,7 @@ public class AddressPage extends BasePage implements IConstants {
      */
     public AddressPage proceedCheckout() {
         log.info("Click on 'Proceed To Checkout' button");
-        proceedToCheckoutButton.click();
+        new Button(driver).click(proceedToCheckoutButton);
         return this;
     }
 }

@@ -12,4 +12,5 @@ public interface ITestConstants {
     String EXPECTED_TSHIRTS_CATEGORY_NAME = "T-shirts";
     String SUCCESSFUL_SEND_CONTACT_US_MESSAGE = "Your message has been successfully sent to our team.";
     String NO_PAYMENT_MODULES_CHECKOUT_MESSAGE = "No payment modules have been installed.";
+    String PRODUCT_NAME = "Faded Short Sleeve T-shirts";
 }
