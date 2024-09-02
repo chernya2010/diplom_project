@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import static waiters.WaitUntilCartWillBeEmpty.waitUntilCartWillBeEmpty;
-import static waiters.WaitUntilElementIsVisible.waitUntilElementIsVisible;
+import static waiters.Waiters.waitUntilCartWillBeEmpty;
+import static waiters.Waiters.waitUntilElementIsVisible;
 
 @Log4j2
 public class CartPage extends BasePage implements IConstants {

@@ -13,11 +13,12 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
      *
      * @throws InterruptedException the interrupted exception
      */
-    @Test(description = "Изменить валюту с UAH на EUR")
+    @Test(description = "Изменить валюту")
     public void changeCurrencyTest() throws InterruptedException {
         basePage.openPage(BASE_PAGE_URL)
-                .changeCurrencyToEuro();
+                .changeCurrency("Евро");
         Thread.sleep(1000);//не менять
+        basePage.hoverOnProductTileAndOpenProductDetailedPage("Faded Short Sleeve T-shirts");
         Assert.assertEquals(basePage.getProductCurrency(),"€");
     }
 

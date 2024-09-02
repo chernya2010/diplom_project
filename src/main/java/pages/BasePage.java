@@ -13,16 +13,15 @@ public class BasePage {
     WebDriver driver;
     private static final String PRODUCT_TILE = "//*[@class='product-container']//h5/a[contains(@title,'%s')]";
     private static final String SEARCH_DROP_DOWN_PRODUCT_NAME = "//strong[normalize-space()='%s']";
+    private static final  String CURRENCY_NAME = "//*[contains(text(),'%s')]";
 
-    @FindBy(xpath = "//*[@id='homefeatured']/li[1]//a[contains(@class,'button ajax_add_to_cart_button btn btn-default')]")
+    @FindBy(xpath = "(//*[contains(text(),'Add to cart')])[1]")
     public WebElement addToCartButton;
-    @FindBy(xpath = "//*[@id='homefeatured']/li[1]//a[contains(@class,'button lnk_view btn btn-default')]")
+    @FindBy(xpath = "(//*[@title='View'])[1]")
     public WebElement moreButton;
     @FindBy(xpath = "//*[@id='setCurrency']")
     public WebElement openCurrencySelectDropDown;
-    @FindBy(xpath = "//*[contains(text(),'Евро')]")
-    public WebElement currencySelectEur;
-    @FindBy(xpath = "//*[@id='homefeatured']/li[1]/div/div[2]/div[1]/span")
+    @FindBy(xpath = "//*[@id='our_price_display']")
     public WebElement productPriceAndCurrency;
     @FindBy(xpath = "//a[@title='Women']")
     public WebElement womanSection;
@@ -63,7 +62,6 @@ public class BasePage {
         WebElement element = driver.findElement(By.xpath(String.format(PRODUCT_TILE, productName)));
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
-        Thread.sleep(1000);//заменить
         log.info("Click 'Add To Cart' button");
         addToCartButton.click();
         return this;
@@ -81,7 +79,6 @@ public class BasePage {
         WebElement element = driver.findElement(By.xpath(String.format(PRODUCT_TILE, productName)));
         Actions action = new Actions(driver);
         action.moveToElement(element).perform();
-        Thread.sleep(1000);//заменить
         log.info("Click 'More' button");
         moreButton.click();
         return this;
@@ -104,11 +101,11 @@ public class BasePage {
      *
      * @return the base page
      */
-    public BasePage changeCurrencyToEuro() {
+    public BasePage changeCurrency(String currencyName) {
         log.info("Open currency select dropdown");
         openCurrencySelectDropDown.click();
         log.info("Select EUR currency from dropdown list");
-        currencySelectEur.click();
+        driver.findElement(By.xpath(String.format(CURRENCY_NAME, currencyName))).click();
         return this;
     }
 
@@ -118,7 +115,7 @@ public class BasePage {
      * @return the string
      */
     public String getProductCurrency() {
-        log.info("Get currency symbol from product tile");
+        log.info("Get currency symbol on detailed product page");
         String[] bits = productPriceAndCurrency.getText().split(" ");
         return bits[bits.length-1];
     }

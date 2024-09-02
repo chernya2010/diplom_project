@@ -1,6 +1,7 @@
 package pages;
 
 import constants.IConstants;
+import elements.Button;
 import generators.NumberGenerator;
 import generators.StringGenerator;
 import lombok.extern.log4j.Log4j2;
@@ -60,21 +61,22 @@ public class AddressPage extends BasePage implements IConstants {
      */
     public AddressPage addNewAddress() {
         log.info("Fill address form");
-        firstnameInput.sendKeys("Some text" + stringGenerator.randomText());
-        lastnameInput.sendKeys("Some text" + stringGenerator.randomText());
-        companyInput.sendKeys("Some text" + stringGenerator.randomText());
-        address1Input.sendKeys("Some text" + stringGenerator.randomText());
-        address2Input.sendKeys("Some text" + stringGenerator.randomText());
+        firstnameInput.sendKeys(stringGenerator.randomText());
+        lastnameInput.sendKeys(stringGenerator.randomText());
+        companyInput.sendKeys(stringGenerator.randomText());
+        address1Input.sendKeys(stringGenerator.randomText());
+        address2Input.sendKeys(stringGenerator.randomText());
         zipcodeInput.sendKeys("00000");
-        cityInput.sendKeys("Some text" + stringGenerator.randomText());
-        homePhoneInput.sendKeys("22" + numberGenerator.generateRandomInt(50000));
-        mobilePhoneInput.sendKeys("22" + numberGenerator.generateRandomInt(50000));
+        cityInput.sendKeys(stringGenerator.randomText());
+        homePhoneInput.sendKeys(String.valueOf(numberGenerator.generateRandomInt(50000)));
+        mobilePhoneInput.sendKeys(String.valueOf(numberGenerator.generateRandomInt(50000)));
         Select dropdown = new Select(driver.findElement(By.xpath(STATE_DROPDOWN)));
         dropdown.selectByValue("1");
-        additionalInformationInput.sendKeys("Some text" + stringGenerator.randomText());
-        assignAddressInput.sendKeys("Some text" + stringGenerator.randomText());
+        additionalInformationInput.sendKeys(stringGenerator.randomText());
+        assignAddressInput.sendKeys(stringGenerator.randomText());
         log.info("Click on 'Save' button");
-        saveAddressButton.click();
+//        saveAddressButton.click();
+        new Button(driver).click(saveAddressButton);
         return this;
     }
 
