@@ -4,6 +4,7 @@ import constants.IConstants;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.AllureUtils;
 
 @Log4j2
 public class LoginTests extends BaseTest implements IConstants, ITestConstants{
@@ -14,6 +15,7 @@ public class LoginTests extends BaseTest implements IConstants, ITestConstants{
     @Test(description = "Успешная авторизация зарегистрированного пользователя")
     public void loginWithCorrectDataTest() {
         loginSteps.login(EMAIL, PASSWORD);
+        AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(driver.getCurrentUrl(), MY_ACCOUNT_PAGE_URL);
         Assert.assertEquals(loginPage.successfulLoginMessageText.getText(), SUCCESSFUL_LOGIN_MESSAGE);
     }

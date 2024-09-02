@@ -4,6 +4,7 @@ import constants.IConstants;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.AllureUtils;
 
 @Log4j2
 public class CartTests extends TestPreconditions implements IConstants, ITestConstants {
@@ -18,6 +19,7 @@ public class CartTests extends TestPreconditions implements IConstants, ITestCon
         basePage.openPage(BASE_PAGE_URL)
                 .hoverOnProductTileAndClickAddToCartButton("Faded Short Sleeve T-shirts");
         addToCartModalWindow.clickPlaceAnOrderButtonOnModalWindow();
+        AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(CART_PAGE_URL, driver.getCurrentUrl());
         Assert.assertEquals(EXPECTED_PRODUCT_NAME, cartPage.getProductNameFromCart());
     }
@@ -33,6 +35,7 @@ public class CartTests extends TestPreconditions implements IConstants, ITestCon
         productDetailedPage.addProductToCart();
         addToCartModalWindow.clickPlaceAnOrderButtonOnModalWindow();
         cartPage.deleteProductFromCart("Faded Short Sleeve T-shirts");
+        AllureUtils.takeScreenshot(driver);
         Assert.assertTrue(cartPage.isProductDisplayedInCart("Faded Short Sleeve T-shirts"));
         Assert.assertEquals(cartPage.getProductsCountFromCart(), EXPECTED_PRODUCT_COUNT_IN_CART_AFTER_DELETE);
     }
@@ -53,6 +56,7 @@ public class CartTests extends TestPreconditions implements IConstants, ITestCon
         addressPage.addNewAddress()
                    .proceedCheckout();
         shippingPage.proceedChechout();
+        AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(paymentPage.noPaymentModulesMessage.getText(), NO_PAYMENT_MODULES_CHECKOUT_MESSAGE);
     }
 }
