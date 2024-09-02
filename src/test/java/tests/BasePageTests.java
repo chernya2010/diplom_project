@@ -4,6 +4,7 @@ import constants.IConstants;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.AllureUtils;
 
 @Log4j2
 public class BasePageTests extends BaseTest implements IConstants, ITestConstants {
@@ -19,6 +20,7 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
                 .changeCurrency("Евро");
         Thread.sleep(1000);//не менять
         basePage.hoverOnProductTileAndOpenProductDetailedPage("Faded Short Sleeve T-shirts");
+        AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(basePage.getProductCurrency(),"€");
     }
 
@@ -30,6 +32,7 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
         basePage.openPage(BASE_PAGE_URL)
                 .hoverOnWomanSection();
         womanModalWindow.openTShirtsPage();
+        AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(driver.getCurrentUrl(), TSHIRTS_PAGE_URL);
         Assert.assertEquals(tShirtsPage.categoryName.getText(), EXPECTED_TSHIRTS_CATEGORY_NAME);
     }
@@ -41,6 +44,7 @@ public class BasePageTests extends BaseTest implements IConstants, ITestConstant
     public void goToProductFromSearchDropDownTest() {
         basePage.openPage(BASE_PAGE_URL)
                 .goToProductFromSearchDropDown("Faded Short Sleeve T-shirts");
+        AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(driver.getCurrentUrl(), "http://prestashop.qatestlab.com.ua/ru/tshirts/1-faded-short-sleeve-tshirts.html");
         Assert.assertEquals(productDetailedPage.productName.getText(), "Faded Short Sleeve T-shirts");
     }

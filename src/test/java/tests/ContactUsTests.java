@@ -4,6 +4,7 @@ import constants.IConstants;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.AllureUtils;
 
 @Log4j2
 public class ContactUsTests extends BaseTest implements IConstants, ITestConstants {
@@ -15,6 +16,7 @@ public class ContactUsTests extends BaseTest implements IConstants, ITestConstan
     public void successfulSendContactUsMessageTest() {
         contactUsPage.openPage(CONTACT_US_PAGE_URL)
                      .successfulSendContactUsMessage();
+        AllureUtils.takeScreenshot(driver);
         Assert.assertEquals(driver.getCurrentUrl(), CONTACT_US_PAGE_URL);
         Assert.assertEquals(contactUsPage.successfulSendMessageText.getText(), SUCCESSFUL_SEND_CONTACT_US_MESSAGE);
     }
